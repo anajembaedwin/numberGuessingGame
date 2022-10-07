@@ -11,8 +11,8 @@ console.log()
 
 
 
-const Y = "Yes"
-const N = "No"
+const Y = "[Yy]es"
+const N = "[Nn]o"
 let accept = prompt(`Type ${Y} or ${N} `)
 console.log()
 let guessAttempt = []
