@@ -1,7 +1,7 @@
-let user = prompt(`What is your name?`)
+let user = prompt(`Please enter your username?`)
 console.clear()
 let greeting = `Welcome ${user}! Would you like to play a Guessing Game?`
-let underLine = "-"
+let underLine = `-`
 
 // console.log(greeting.length)
 underLine = underLine.repeat(greeting.length)
@@ -11,25 +11,61 @@ console.log()
 
 
 
-let Y = "Yes"
-let N = "No"
+const Y = "Yes"
+const N = "No"
 let accept = prompt(`Type ${Y} or ${N} `)
-let guessRange = []
+console.log()
+let guessAttempt = []
 let pointsGotten = "0"
 
 
 
-//function to check the value of Y and N
-function promptUser() {
-    if (accept == Y){
+//function block to check the value of Y and N
+function CompareValues(){
+  if (accept == Y){
+    let startRange = prompt(`Enter minimum guess range please: `)
     console.log()
-    let guess = prompt("Enter a guess between 1 and 2 ")
+    let stopRange = prompt(`Enter maximum guess range please: `)
     console.log()
-      if (guess >=1 && guess <=2){
+    let guess = prompt(`Enter a guess between ${startRange} and ${stopRange} `)
+    console.log()
+
+    //arrow function to get range of values and create a random variable
+      const randomGuess = (startRange, stopRange) => {
+        startRange = Math.ceil(startRange);
+        stopRange = Math.floor(stopRange);
+        return Math.floor(Math.random() * (stopRange - startRange + 1) + startRange); // The maximum is inclusive and the minimum is inclusive
+      }
+    
+    const compareGuess = () => {
+        if (randomGuess(startRange, stopRange) === guess) {
+        console.log(`Your Guess is Correct!`)
+      }
+    }
+
+    
+    randomGuess()
+    
+      if (guess >=startRange && guess <=stopRange){
         console.log(`Your guess is ${guess}`)
         console.log()
-        guessRange.push(guess)
-        console.log(guessRange)
+        console.log(`The actual guess is ${randomGuess()}`)
+        console.log()
+        guessAttempt.push(guess)
+        console.log(`This(ese) is(are) your guess(es): ` + guessAttempt)
+        console.log()
+
+        if (compareGuess() === true) {
+          console.log(`Your guess is correct`)
+          console.log()
+        } else {
+          console.log(`Your guess is not correct`)
+          console.log()
+          console.log()
+          console.log(`Let us try again`)
+          console.log()
+          CompareValues()
+        }
       } else {
         console.clear()
         reAttempt()
@@ -37,18 +73,17 @@ function promptUser() {
     
   } else {
     console.log()
-    console.log("We hate to see you leave, come back and play again.")
+    console.log(`We hate to see you leave, come back and play again.`)
   }
 }
 
-promptUser()
 
 //function to run a re-attempt when guess fails
 function reAttempt() {
   console.log()
   console.log(`Your guess is invalid, try again please`)
   console.log()
-  promptUser()
+  CompareValues()
 }
 
 //function to add and update points gotten by player
@@ -59,5 +94,5 @@ function addPoints() {
 }
 
 addPoints()
-
+CompareValues()
 
