@@ -26,7 +26,9 @@ let pointsGotten = "0"
 
 //function block to check the value of Y and N
 function CompareValues(){
+
   if (answerY){
+    
     let startRange = prompt(`Enter minimum guess range please: `)
     console.log()
     let stopRange = prompt(`Enter maximum guess range please: `)
@@ -43,7 +45,12 @@ function CompareValues(){
     
     randomGuess()
     
+    
+    
       if (guess >=startRange && guess <=stopRange){
+        console.log()
+        console.log()
+        console.log()
         console.log(`Your guess is ${guess}`)
         console.log()
         console.log(`The actual guess is ${randomGuess(startRange, stopRange)}`)
@@ -52,9 +59,12 @@ function CompareValues(){
         console.log(`This(ese) is(are) your guess(es): ` + guessAttempt)
         console.log()
 
-        if (randomGuess(startRange, stopRange) === guess) {
+        if (randomGuess(startRange, stopRange) == guess) {
           console.log(`Your guess is correct`)
           console.log()
+          addPoints()
+          console.log()
+          CompareValues()
         } else {
           console.log(`Your guess is not correct`)
           console.log()
@@ -88,8 +98,13 @@ function addPoints() {
   pointsInNumber = parseInt(pointsGotten, 10)
   // console.log(typeof(pointsInNumber))
   // console.log(pointsInNumber)
+  for (i=0; i<guessAttempt.length; i++) {
+    pointsInNumber = guessAttempt.length
+    
+  }
+  console.log(`Your guess point is ${pointsInNumber}`)
 }
 
-addPoints()
+
 CompareValues()
 
