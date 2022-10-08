@@ -11,9 +11,13 @@ console.log()
 
 
 
-const Y = "[Yy]es"
-const N = "[Nn]o"
+let Y = "Yes"
+let N = "No"
 let accept = prompt(`Type ${Y} or ${N} `)
+Y = "[Yy]es"
+N = "[Nn]o"
+const answerY = accept.match(Y)
+const answerN = accept.match(N)
 console.log()
 let guessAttempt = []
 let pointsGotten = "0"
@@ -22,7 +26,7 @@ let pointsGotten = "0"
 
 //function block to check the value of Y and N
 function CompareValues(){
-  if (accept == Y){
+  if (answerY){
     let startRange = prompt(`Enter minimum guess range please: `)
     console.log()
     let stopRange = prompt(`Enter maximum guess range please: `)
@@ -37,25 +41,18 @@ function CompareValues(){
         return Math.floor(Math.random() * (stopRange - startRange + 1) + startRange); // The maximum is inclusive and the minimum is inclusive
       }
     
-    const compareGuess = () => {
-        if (randomGuess(startRange, stopRange) === guess) {
-        console.log(`Your Guess is Correct!`)
-      }
-    }
-
-    
     randomGuess()
     
       if (guess >=startRange && guess <=stopRange){
         console.log(`Your guess is ${guess}`)
         console.log()
-        console.log(`The actual guess is ${randomGuess()}`)
+        console.log(`The actual guess is ${randomGuess(startRange, stopRange)}`)
         console.log()
         guessAttempt.push(guess)
         console.log(`This(ese) is(are) your guess(es): ` + guessAttempt)
         console.log()
 
-        if (compareGuess() === true) {
+        if (randomGuess(startRange, stopRange) === guess) {
           console.log(`Your guess is correct`)
           console.log()
         } else {
