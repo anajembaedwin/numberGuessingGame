@@ -28,12 +28,15 @@ let pointsGotten = "0"
 function CompareValues(){
 
   if (answerY){
-    
+    console.log()
     let startRange = prompt(`Enter minimum guess range please: `)
+    startRange = Number(startRange)
     console.log()
     let stopRange = prompt(`Enter maximum guess range please: `)
+    stopRange = Number(stopRange)
     console.log()
     let guess = prompt(`Enter a guess between ${startRange} and ${stopRange} `)
+    guess = Number(guess)
     console.log()
 
     //arrow function to get range of values and create a random variable
@@ -59,14 +62,18 @@ function CompareValues(){
         console.log(`This(ese) is(are) your guess(es): ` + guessAttempt)
         console.log()
 
-        if (randomGuess(startRange, stopRange) == guess) {
+        if (randomGuess(startRange, stopRange) === guess) {
           console.log(`Your guess is correct`)
           console.log()
           addPoints()
           console.log()
+          console.log()
+          console.log()
+          console.log(`Let us play again`)
           CompareValues()
         } else {
           console.log(`Your guess is not correct`)
+          console.log()
           console.log()
           console.log()
           console.log(`Let us try again`)
