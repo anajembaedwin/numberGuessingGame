@@ -59,7 +59,7 @@ function Range(){
         console.log(`The actual guess is ${randomGuess(startRange, stopRange)}`)
         console.log()
         guessAttempt.push(guess)
-        console.log(`This(ese) is(are) your guess(es): ` + guessAttempt)
+        guessList()
         console.log()
 
         if (randomGuess(startRange, stopRange) === guess) {
@@ -98,6 +98,14 @@ function reAttempt() {
   console.log(`Your guess is invalid, try again please`)
   console.log()
   Range()
+}
+
+function guessList() {
+  if (guessAttempt.length < 2) {
+    console.log(`This is your guess: ` + guessAttempt)
+  } else {
+    console.log(`These are your guesses: ` + guessAttempt)
+  }
 }
 
 //function to add and update points gotten by player
