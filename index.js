@@ -24,8 +24,8 @@ let pointsGotten = "0"
 
 
 
-//function block to check the value of Y and N
-function CompareValues(){
+//function block to check and Compare range values
+function Range(){
 
   if (answerY){
     console.log()
@@ -70,7 +70,7 @@ function CompareValues(){
           console.log()
           console.log()
           console.log(`Let us play again`)
-          CompareValues()
+          Range()
         } else {
           console.log(`Your guess is not correct`)
           console.log()
@@ -78,7 +78,7 @@ function CompareValues(){
           console.log()
           console.log(`Let us try again`)
           console.log()
-          CompareValues()
+          Range()
         }
       } else {
         console.clear()
@@ -97,7 +97,7 @@ function reAttempt() {
   console.log()
   console.log(`Your guess is invalid, try again please`)
   console.log()
-  CompareValues()
+  Range()
 }
 
 //function to add and update points gotten by player
@@ -113,5 +113,5 @@ function addPoints() {
 }
 
 
-CompareValues()
+Range()
 
