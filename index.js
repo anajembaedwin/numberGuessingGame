@@ -23,54 +23,50 @@ let guessAttempt = []
 let pointsGotten = "0"
 
 
-
 //function block to check and Compare range values
-function Range(){
+function compareGuess(randomizer){
 
   if (answerY){
     console.log()
     let startRange = prompt(`Enter minimum guess range please: `)
-    startRange = Number(startRange)
     console.log()
     let stopRange = prompt(`Enter maximum guess range please: `)
+    console.log()
+    let guess = prompt(`Enter a guess between ${startRange} and ${stopRange}: `)
+    
+    startRange = Number(startRange)
     stopRange = Number(stopRange)
-    console.log()
-    let guess = prompt(`Enter a guess between ${startRange} and ${stopRange} `)
     guess = Number(guess)
-    console.log()
+    
+    let min = Math.ceil(startRange);
+    let max = Math.floor(stopRange);
 
-    //arrow function to get range of values and create a random variable
-      const randomGuess = (startRange, stopRange) => {
-        startRange = Math.ceil(startRange);
-        stopRange = Math.floor(stopRange);
-        return Math.floor(Math.random() * (stopRange - startRange + 1) + startRange); // The maximum is inclusive and the minimum is inclusive
-      }
-    
-    randomGuess()
-    
-    
+    randomizer = Math.floor(Math.random() * (max - min + 1)) + min
+    randomizer = Number(randomizer)
+        
     
       if (guess >=startRange && guess <=stopRange){
         console.log()
         console.log()
         console.log()
-        console.log(`Your guess is ${guess}`)
+        console.log(`Your guess is: ${guess}`)
         console.log()
-        console.log(`The actual guess is ${randomGuess(startRange, stopRange)}`)
+        console.log(`The actual guess is: ${randomizer}`)
         console.log()
-        guessAttempt.push(guess)
-        guessList()
-        console.log()
+       
 
-        if (randomGuess(startRange, stopRange) === guess) {
+        if (randomizer === guess) {
           console.log(`Your guess is correct`)
+          console.log()
+          guessAttempt.push(guess)
+          guessList()
           console.log()
           addPoints()
           console.log()
           console.log()
           console.log()
           console.log(`Let us play again`)
-          Range()
+          compareGuess()
         } else {
           console.log(`Your guess is not correct`)
           console.log()
@@ -78,7 +74,7 @@ function Range(){
           console.log()
           console.log(`Let us try again`)
           console.log()
-          Range()
+          compareGuess()
         }
       } else {
         console.clear()
@@ -97,7 +93,7 @@ function reAttempt() {
   console.log()
   console.log(`Your guess is invalid, try again please`)
   console.log()
-  Range()
+  compareGuess()
 }
 
 function guessList() {
@@ -118,8 +114,13 @@ function addPoints() {
     
   }
   console.log(`Your guess point is ${pointsInNumber}`)
+  if (pointsInNumber = 1) {
+    newLevel()
+  }
 }
 
-
-Range()
+function newLevel() {
+  console.log(`Welcome to level ${guessAttempt.length + 1}`)
+}
+compareGuess()
 
