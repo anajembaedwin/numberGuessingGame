@@ -77,7 +77,6 @@ function compareGuess(randomizer){
           compareGuess()
         }
       } else {
-        console.clear()
         reAttempt()
       }
     
@@ -120,7 +119,14 @@ function addPoints() {
 }
 
 function newLevel() {
-  console.log(`Welcome to level ${guessAttempt.length + 1}`)
+  console.log()
+  console.log()
+  let newGreeting = `Welcome to level ${guessAttempt.length + 1}`
+  console.log(newGreeting)
+  underLine = `-`
+  underLine = underLine.repeat(newGreeting.length)
+  console.log(underLine)
+  pointsInNumber = guessAttempt.length
 }
 compareGuess()
 
