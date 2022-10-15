@@ -1,3 +1,4 @@
+console.clear()
 let user = prompt(`Please enter your username?`)
 console.clear()
 let greeting = `Welcome ${user}! Would you like to play a Guessing Game?`
