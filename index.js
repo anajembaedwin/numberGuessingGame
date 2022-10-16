@@ -23,30 +23,33 @@ console.log()
 let guessAttempt = []
 let pointsGotten = "0"
 
+console.log()
+let startRange = "1"
+console.log()
+let stopRange = "3"
+console.log()
+    
+startRange = parseInt(startRange, 10)
+stopRange = parseInt(stopRange, 10)
+    
+let min = Math.ceil(startRange);
+let max = Math.floor(stopRange);
+
 
 //function block to check and Compare range values
-function compareGuess(randomizer){
+function compareGuess(range, randomizer){
 
   if (answerY){
-    console.log()
-    let startRange = prompt(`Enter minimum guess range please: `)
-    console.log()
-    let stopRange = prompt(`Enter maximum guess range please: `)
-    console.log()
-    let guess = prompt(`Enter a guess between ${startRange} and ${stopRange}: `)
+
+    range = max - min + 1
     
-    startRange = Number(startRange)
-    stopRange = Number(stopRange)
+    randomizer = Math.floor(Math.random() * (range)) + min
+    randomizer = Number(randomizer)
+    
+    let guess = prompt(`Enter a guess between ${min} and ${max}: `)   
     guess = Number(guess)
     
-    let min = Math.ceil(startRange);
-    let max = Math.floor(stopRange);
-
-    randomizer = Math.floor(Math.random() * (max - min + 1)) + min
-    randomizer = Number(randomizer)
-        
-    
-      if (guess >=startRange && guess <=stopRange){
+      if (guess >=min && guess <=max){
         console.log()
         console.log()
         console.log()
@@ -64,7 +67,8 @@ function compareGuess(randomizer){
           console.log()
           addPoints()
           console.log()
-          console.log(`Let us play again`)
+          console.log(`Let us play again, you're doing a great job!`)
+          console.log()
           compareGuess()
         } else {
           console.log(`Your guess is not correct`)
@@ -80,7 +84,6 @@ function compareGuess(randomizer){
       }
     
   } else {
-    console.log()
     console.log(`We hate to see you leave, come back and play again.`)
   }
 }
@@ -127,6 +130,8 @@ function newLevel() {
   underLine = underLine.repeat(newGreeting.length)
   console.log(underLine)
   pointsInNumber = guessAttempt.length
+  max++
 }
+
 compareGuess()
 
