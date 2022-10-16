@@ -26,7 +26,7 @@ let pointsGotten = "0"
 console.log()
 let startRange = "1"
 console.log()
-let stopRange = "3"
+let stopRange = "2"
 console.log()
     
 startRange = parseInt(startRange, 10)
