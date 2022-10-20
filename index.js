@@ -37,13 +37,13 @@ let max = Math.floor(stopRange);
 
 
 //function block to check and Compare range values
-function compareGuess(range, randomizer){
+function Range(setRange){
 
   if (answerY){
 
-    range = max - min + 1
+    setRange = max - min + 1
     
-    randomizer = Math.floor(Math.random() * (range)) + min
+    randomizer = Math.floor(Math.random() * (setRange)) + min
     randomizer = Number(randomizer)
     
     let guess = prompt(`Enter a guess between ${min} and ${max}: `)   
@@ -69,7 +69,7 @@ function compareGuess(range, randomizer){
           console.log()
           console.log(`Let us play again, you're doing a great job!`)
           console.log()
-          compareGuess()
+          Range()
         } else {
           console.log(`Your guess is not correct`)
           console.log()
@@ -77,7 +77,7 @@ function compareGuess(range, randomizer){
           console.log()
           console.log(`Let us try again`)
           console.log()
-          compareGuess()
+          Range()
         }
       } else {
         reAttempt()
@@ -94,14 +94,14 @@ function reAttempt() {
   console.log()
   console.log(`Your guess is invalid, try again please`)
   console.log()
-  compareGuess()
+  Range()
 }
 
 function guessList() {
   if (guessAttempt.length < 2) {
-    console.log(`This is your guess: ${guessAttempt} `)
+    console.log(`This is your correct guess between ${min} and ${max}: ${guessAttempt} `)
   } else {
-    console.log(`These are your guesses: ${guessAttempt} `)
+    console.log(`These are your correct guesses: ${guessAttempt} `)
   }
 }
 
@@ -133,5 +133,5 @@ function newLevel() {
   max++
 }
 
-compareGuess()
+Range()
 
